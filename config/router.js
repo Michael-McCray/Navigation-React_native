@@ -8,7 +8,7 @@ import Settings from '../screens/Settings';
 import UserDetail from '../screens/UserDetail';
 
 
-
+// Make sure to define the functions before you can use them in the Stacks.
 
 export const FeedStack = StackNavigator({
   Feed: {
@@ -35,7 +35,7 @@ export const MeStack = StackNavigator({
   },
   Settings: {
     screen: Settings,
-  
+
   },
 });
 
