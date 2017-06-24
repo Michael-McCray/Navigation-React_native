@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
+import {Tabs} from '../config/router';
 
 class Settings extends Component {
+  constructor(){
+    super();
+    this.handleSettingsPress = this.handleSettingsPress.bind(this);
+  }
+
+  handleSettingsPress(){
+    this.props.navigation.navigate('Me')
+  }
   render() {
     return (
+      <View>
       <ScrollView>
         <List>
           <ListItem
@@ -12,6 +22,7 @@ class Settings extends Component {
           />
           <ListItem
             title="Profile"
+            onPress={this.handleSettingsPress}
           />
           <ListItem
             title="Password"
@@ -24,6 +35,8 @@ class Settings extends Component {
           />
         </List>
       </ScrollView>
+      <Tabs />
+      </View>
     );
   }
 }

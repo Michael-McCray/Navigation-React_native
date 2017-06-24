@@ -5,17 +5,59 @@ import { Icon } from 'react-native-elements';
 import Feed from '../screens/Feed';
 import Me from '../screens/Me';
 import Settings from '../screens/Settings';
+import UserDetail from '../screens/UserDetail';
 
-export const Tabs = TabNavigator({
+
+
+
+export const FeedStack = StackNavigator({
   Feed: {
     screen: Feed,
     navigationOptions: {
-      tabBarLabel: 'Feed Me',}
+      title: 'Feed',
+    },
   },
-  Me: {
-    screen: Me,
+  Details: {
+    screen: UserDetail,
+    navigationOptions: ({ navigation }) => ({
+      title: `${navigation.state.params.name.first.toUpperCase()} ${navigation.state.params.name.last.toUpperCase()}`,
+    }),
   },
 });
+
+
+export const MeStack = StackNavigator({
+  Me: {
+    screen: Me,
+    navigationOptions: {
+      title: 'Me',
+    },
+  },
+  Settings: {
+    screen: Settings,
+  
+  },
+});
+
+
+export const Tabs = TabNavigator({
+  Feed: {
+    screen: FeedStack,
+    navigationOptions: {
+      tabBarLabel: 'Feed',
+      tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />,
+    },
+  },
+  Me: {
+    screen: MeStack,
+    navigationOptions: {
+      tabBarLabel: 'Me',
+      tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
+    },
+  },
+});
+
+
 
 export const SettingsStack = StackNavigator({
   Settings: {
@@ -24,4 +66,16 @@ export const SettingsStack = StackNavigator({
       title: 'Settings',
     },
   },
+});
+
+export const Root = StackNavigator({
+  Tabs: {
+    screen: Tabs,
+  },
+  // Settings: {
+  //   screen: SettingsStack,
+  // },
+}, {
+
+  headerMode: 'none',
 });

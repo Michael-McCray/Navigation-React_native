@@ -10,7 +10,7 @@ class Me extends Component {
   }
   handleSettingsPress(){
     console.log('this is being pressed')
-    !this.props.navigation.navigate('Settings');
+    this.props.navigation.navigate('Settings');
   };
 
   render() {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs } from './config/router';
+import { Root  } from './config/router';
 // import MyScene from './components/scene1';
 // import { StackNavigator } from 'react-navigation';
 
@@ -17,7 +17,7 @@ export default class App extends React.Component {
   // }
   render() {
     return (
-      <Tabs />
+      <Root />
     );
   }
 }
